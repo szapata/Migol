@@ -1,0 +1,7 @@
+MigolCommonPagesBundle_homepage:
+    pattern:  /
+    defaults: { _controller: MigolCommonPagesBundle:Default:index }
+
+MigolCommonPagesBundle_dashboard:
+    pattern:  /social/dashboard
+    defaults: { _controller: MigolCommonPagesBundle:Private:index }

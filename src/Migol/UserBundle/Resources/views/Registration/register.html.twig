@@ -1,0 +1,21 @@
+{% extends "MigolCommonPagesBundle::2colsRightLayout.html.twig" %}
+
+{% block secondCol %}
+
+    <div class="row white-transparent-box padding-top-standard">
+        <div class="span6">
+            <h1>{{'public.signup' | trans }}<br/>
+                <small>{{'public.signup.seconds' | trans }}</small>
+            </h1>
+            {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+        </div>
+        <div class="span4">
+            <div class="alert-message block-message warning">
+                <h5>{{ 'public.signin.facebook'|trans }}</h5><br/>
+                <a href="#" class="btn facebook"><span class="icon-facebook-small"></span>{{ 'public.signup'|trans }}</a>
+            </div>
+        </div>
+    </div>
+
+    
+{% endblock secondCol %}

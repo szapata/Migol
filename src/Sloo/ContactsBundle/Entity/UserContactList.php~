@@ -1,0 +1,83 @@
+<?php
+namespace Sloo\ContactsBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass="Sloo\ContactsBundle\Model\UserContactsListRepository")
+ * @ORM\Table(name="user_contacts_list") 
+ */
+
+class UserContactList
+{
+            
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Migol\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_in_list", referencedColumnName="id")
+     */
+    protected $userinlist;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Sloo\ContactsBundle\Entity\ContactList", inversedBy="usercontactlists")
+     * @ORM\JoinColumn(name="contactlist_id", referencedColumnName="id")
+     * 
+     */
+    protected $contactlist;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userinlist
+     *
+     * @param Migol\UserBundle\Entity\User $userinlist
+     */
+    public function setUserinlist(\Migol\UserBundle\Entity\User $userinlist)
+    {
+        $this->userinlist = $userinlist;
+    }
+
+    /**
+     * Get userinlist
+     *
+     * @return Migol\UserBundle\Entity\User 
+     */
+    public function getUserinlist()
+    {
+        return $this->userinlist;
+    }
+
+    /**
+     * Set contactlist
+     *
+     * @param Sloo\ContactsBundle\Entity\ContactList $contactlist
+     */
+    public function setContactlist(\Sloo\ContactsBundle\Entity\ContactList $contactlist)
+    {
+        $this->contactlist = $contactlist;
+    }
+
+    /**
+     * Get contactlist
+     *
+     * @return Sloo\ContactsBundle\Entity\ContactList 
+     */
+    public function getContactlist()
+    {
+        return $this->contactlist;
+    }
+}

@@ -1,0 +1,138 @@
+<?php
+// src/Acme/UserBundle/Entity/User.php
+
+namespace Migol\UserBundle\Entity;
+
+use FOS\UserBundle\Entity\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+    
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $firstname;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $lastname;
+
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $address;
+    
+    /**
+    * @ORM\Column(type="string", nullable=true)
+    */
+    protected $city;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Sloo\BackendBundle\Entity\Region", inversedBy="users")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    protected $region;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Sloo\BackendBundle\Entity\Country", inversedBy="users")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id")
+     */
+    protected $country;
+    
+    /**
+    * @ORM\Column(type="date", nullable=true)
+    */
+    protected $birthdate;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $player;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $manager;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $trainer;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $fan=true;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $medic;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $agent;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $executive;  
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $male;  
+    
+    /**
+    * @ORM\Column(type="text", nullable=true)
+    */
+    protected $aboutme;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Migol\UserBundle\Entity\UserSkill", mappedBy="user")
+     */
+    protected $skills;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Migol\UserBundle\Entity\UserPosition", mappedBy="user")
+     */
+    protected $positions;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Sloo\ContactsBundle\Entity\ContactList", mappedBy="usercontactlists")
+     */
+    protected $contactlists;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Migol\UserBundle\Entity\User")
+     * @ORM\JoinTable(
+     * 		name="follow",
+     *      joinColumns={
+     *      	@ORM\JoinColumn(name="follower_id", referencedColumnName="id")
+     *      },
+     *      inverseJoinColumns={@ORM\JoinColumn(name="followed_id", referencedColumnName="id")}
+     * )
+     */
+    protected $followlist;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Migol\UserBundle\Entity\User", mappedBy="followlist")
+     */
+    protected $followers;
+    
+    
+    
+}

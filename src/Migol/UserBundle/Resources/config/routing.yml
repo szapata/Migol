@@ -1,0 +1,7 @@
+MigolUserBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: MigolUserBundle:Default:index }
+
+MigolUserBundle_showProfile:
+    pattern:  /social/profile/{username}
+    defaults: { _controller: MigolUserBundle:Profile:showProfile }

@@ -1,0 +1,23 @@
+{% set navigation = [
+                        {'id': 1, 'href':  url('MigolCommonPagesBundle_dashboard'), 'label': 'dashboard', 'icon':"icon-dashboard", 'iconactive':'icon-dashboard-active' },
+                        {'id': 2, 'href': '#', 'label': 'events',    'icon':"icon-events",    'iconactive':'icon-events-active'  },
+                        {'id': 3, 'href': '#', 'label': 'pictures',  'icon':"icon-pictures",  'iconactive':'icon-pictures-active'  },
+                        {'id': 4, 'href': '#', 'label': 'videos',    'icon':"icon-videos",    'iconactive':'icon-videos-active'  },
+                        {'id': 5, 'href':  url('MigolUserBundle_showProfile',{'username': user.username }), 'label': 'profile',   'icon':"icon-profile",   'iconactive':'icon-profile-active'  },
+                        {'id': 6, 'href':  url('SlooContactsBundle_allContacts',{'username': user.username }) , 'label': 'contacts',  'icon':"icon-contacts",  'iconactive':'icon-contacts-active'  }
+                    ] 
+%}
+
+<div class="row margin-top-half">
+    <div class="span4">
+        <ul class="left-menu">
+            {% for item in navigation %}
+                <li {% if item.href ==  app.request.uri  %} class="active" {% endif %}>
+                    <span {% if item.href ==  app.request.uri %} class="{{item.iconactive}}" {% else %} class="{{item.icon}}" {% endif %}></span>
+                    <a href="{{item.href}}"><strong>{{item.label|trans}}</strong></a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+

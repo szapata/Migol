@@ -1,0 +1,42 @@
+<div class="row margin-top-standard">
+    <div class="span4">
+        {% if contacts|length > 0 %}
+        <p><strong>{% if followers %}
+                        {% if user!=user2 %}
+                            {{ 'followers.of'|trans }} 
+                            {% if user2.firstname is empty %}
+                                {{user2.username}}
+                            {% else  %}
+                                {{user2.firstname}} {{user2.lastname}}    
+                            {% endif  %}
+                        {% else %}
+                            {{ 'followers.of.you'|trans }}
+                        {% endif %}
+                   {% else %}
+                        {% if user!=user2 %}
+                            {{ 'people.followed.by'|trans }}
+                            {% if user2.firstname is empty %}
+                                {{user2.username}}
+                            {% else  %}
+                                {{user2.firstname}} {{user2.lastname}}    
+                            {% endif  %}
+                        {% else %}
+                            {{ 'people.followed.by.you'|trans }}
+                        {% endif %}
+                   {% endif %}
+           </strong></p>
+        <p>
+        {% for contact in contacts %}
+            <a href="{{ path('MigolUserBundle_showProfile',{'username': contact.username }) }}" rel="twipsy" title="{{contact.username}}"><img src="//lh6.googleusercontent.com/-h2ItMrLEMww/AAAAAAAAAAI/AAAAAAAAAx0/qRp2UhNuryU/photo.jpg?sz=48" alt="Foto del perfil de Salvador" width="40" height="40"/></a>
+        {% endfor %}
+        </p>
+        {% if followers %}
+            <a href="{{ path('SlooContactsBundle_followers',{'username': user2.username }) }}" class="seemore">{{ 'see.more'|trans }} &raquo;</a>
+        {% else %}
+            <a href="{{ path('SlooContactsBundle_followeds',{'username': user2.username }) }}" class="seemore">{{ 'see.more'|trans }} &raquo;</a>
+        {% endif %}
+        
+        {% endif %}
+    </div>
+</div>
+

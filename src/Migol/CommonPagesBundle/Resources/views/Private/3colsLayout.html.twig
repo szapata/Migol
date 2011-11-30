@@ -1,0 +1,45 @@
+{% extends "MigolCommonPagesBundle::layout.html.twig" %}
+
+{% block scripts%}
+    {{ parent() }}   
+{% endblock %}
+{% block bodyclass %} {% endblock %}
+{% block header %}
+        <!-- Navigation Top Bar -->
+        {% render 'MigolCommonPagesBundle:GlobalBlocks:topNavBar' %}
+        <!-- End Navigation Top Bar -->
+{% endblock %}
+{% block content %}
+
+<div class="row margin-top-topbar">
+    <!-- 1st Column -->
+    <div class="span4">
+        
+            {% block firstCol %}
+                {% include 'MigolCommonPagesBundle:Private:photo.html.twig' %}
+                {% include 'MigolCommonPagesBundle:Private:menu.html.twig' %}
+            {% endblock firstCol %}
+        
+    
+    </div>
+    <!-- End 1st Column -->
+    
+    <!-- 2nd Column -->
+    <div class="span9">
+        <div class="row margin-top-logo center-column-content">
+            {% block secondCol %}
+                
+            {% endblock secondCol %}
+        </div>
+    </div>
+    <!-- End 2nd Column -->
+    
+    <!-- 3th Column -->
+    <div class="span4">
+        <div class="row margin-top-logo">
+            {% block thirdCol %}{% endblock thirdCol %}
+        </div>
+    </div>
+    <!-- End 3th Column -->
+</div>
+{% endblock content %}

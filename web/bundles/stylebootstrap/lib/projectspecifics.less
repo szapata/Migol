@@ -1,0 +1,456 @@
+/* projectspecifics.less
+ * All the specific styles related to your project
+ * ---------------------------------------------------------------------------------------- */
+
+// Extending variables in variables.less
+//-----------------------------------------
+@baseColor:         @green;
+@baseColorText:     "gray"; 
+@lighten:           lighten(@baseColor, 40%);
+@linkColor:         @green;
+
+// Project variables
+//-------------------
+
+// Colors
+@facebookBlueLight: #6776AF; //#9eaccb;
+@facebookBlueDark:  #3E4D9A;
+@midLighten:        lighten(@baseColor, 30%);
+
+// Borders and Shadows
+@shadowInset: inset 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+@shadow: 0 2px 4px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.05);
+@border: 1px solid @midLighten;
+
+// URLs
+@publicResourcesBundle:   "migolcommonpages";
+@baseAssetsURL:     "../../@{publicResourcesBundle}";
+@baseImagesURL:     "@{baseAssetsURL}/images/";
+
+// Extending bootstrap styles 
+//-----------------------------------------
+
+h1{
+    small{
+        color: @gray;
+    }
+}
+
+p{
+    small{
+        color: @gray;
+    }
+}
+.btn{
+    &.superlarge{
+        font-size: @basefont + 10px;
+        line-height: normal;
+        padding: 9px 25px 9px;
+        .border-radius(4px);
+    }
+    &.facebook, .facebook:hover {
+        .gradientBar(@facebookBlueLight, @facebookBlueDark);
+        color: @white;
+    }
+    &.orange, .orange:hover{
+        color: @white;
+    }
+    &.orange{
+        .gradientBar(lighten(@orange, 20%), @orange);
+    }
+    
+}
+
+
+// Project Mixins
+//-------------------
+.border(@border: 1px solid @baseColor){
+    border: @border;
+}
+.border-bottom(@border: 1px solid @baseColor){
+    border-bottom: @border;
+}
+.border-sides(@border: 1px solid @baseColor){
+    border-left:  @border;
+    border-right: @border;
+}
+.sprite-icon(@imageurl:"image.png", @marginright: 5px, @marginleft: 0px, @left: 0px, @top: 0px, @width: 15px, @minheight: 30px, @float: left){
+
+    display:    block;
+    float:      @float;
+    margin-right:   @marginright;
+    background-image:   url("@{imageurl}");
+    background-repeat:  no-repeat;
+    background-position: @left @top;
+    width: @width; 
+    min-height: @minheight;
+}
+.sprite(@imageurl:"image.png",
+                @left: 0px, 
+                @top: 0px ){
+
+    background-image:   url("@{imageurl}");
+    background-repeat:  no-repeat;
+    background-position: @left @top;        
+
+}
+// Project styles
+//-------------------
+
+// Containers
+.body-background{
+    background-color:   @lighten;
+}
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    overflow: visible;
+    z-index: 9999;
+    min-height: @topbarHeightLogo;
+    .border-bottom(@border);
+    background-color:   @lighten;
+}
+.loading{
+    position: fixed;
+    top: @topbarHeightLogo+@topbarHeight+5;
+    overflow: visible;
+}
+.profile-photo{
+        a{
+            color: @grayDark;
+        }
+        img{
+            vertical-align: middle;
+            margin-right:10px;
+        }
+            
+}
+.index-worldmap-bg{
+    @imageurl: "@{baseImagesURL}bgs/worldmap.png";
+    .sprite(@imageurl, 30px, 50px);
+}
+
+.black-transparent-box{
+    background-color: fadeout(@black, 80%);
+    .border-radius(6px);
+}
+.white-transparent-box{
+    background-color: fadeout(@white, 30%);
+    .border-radius(6px);
+    .border(@border);
+}
+.center-column-content{
+    .border-sides(@border);
+    min-height: 768px;
+}
+ul.left-menu{
+    list-style:none;
+    padding-left: 0;
+    margin-left: 0;
+    li{
+        padding: 5px;
+        line-height: 22px;
+        a{
+            text-decoration: none;
+            color: @grayDark;
+        }
+    }
+    li:hover{
+        background-color: @lighten;
+    }
+    li.active{
+        .gradientBar(lighten(@green, 20%), @green);
+        
+        a{
+            color: @white;
+        }
+    }
+    
+}
+ul.left-entities{
+    list-style:none;
+    padding-left: 0;
+    margin-left: 0;
+    li{
+        padding: 2px;
+        font-size: 11px;
+        a{
+            text-decoration: none;
+            color: @baseColor;
+        }
+        img{
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+    }
+    li:hover{
+        background-color: @grayLighter;
+    }
+    
+    
+}
+// Icons and Sprites
+.icon-facebook{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -832px;
+        @top: -8px;
+        @width: 15px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);    
+}
+.icon-facebook-small{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -847px;
+        @top: -14px;
+        @width: 8px;
+        @minheight: 15px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);    
+}
+.icon-padlock-small{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -43px;
+        @top: -93px;
+        @width: 13px;
+        @minheight: 16px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);  
+}
+.icon-config-small{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -610px;
+        @top: -26px;
+        @width: 15px;
+        @minheight: 16px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-notifications-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -870px;
+        @top: -7px;
+        @width: 25px;
+        @minheight: 25px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-notifications-unactive{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -900px;
+        @top: -7px;
+        @width: 25px;
+        @minheight: 25px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-delete-small{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -156px;
+        @width: 12px;
+        @minheight: 12px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+// Left Menu Icons
+.icon-dashboard{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -6px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-dashboard-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -6px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-events{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -28px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-events-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -28px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-profile{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -52px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-profile-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -52px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+}
+.icon-contacts{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -74px;
+        @width: 22px;
+        @minheight: 20px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-contacts-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -74px;
+        @width: 22px;
+        @minheight: 20px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-pictures{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -94px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-pictures-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -94px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-videos{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -116px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-videos-active{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -116px;
+        @width: 22px;
+        @minheight: 22px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-left-competitions{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -940px;
+        @top: -138px;
+        @width: 11px;
+        @minheight: 15px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+.icon-left-favorites{
+        @imageurl: "@{baseImagesURL}bgs/sprites-@{baseColorText}.png";
+        @marginright: 10px; 
+        @marginleft: 0px;
+        @left: -964px;
+        @top: -138px;
+        @width: 15px;
+        @minheight: 15px;
+        @float: left;
+        .sprite-icon(@imageurl, @marginright, @marginleft, @left, @top, @width, @minheight,@float);
+        
+}
+// Types
+.white-text{
+    color: @white;
+}
+.red-text{
+    color: @red;
+}
+
+// Other Color Links
+a.yellow{
+    color:  @yellow;
+}
+a.seemore{
+    color:  @baseColor;
+    font-size: 11px;
+}
+//borders
+.border-bottom{
+    @border: 1px solid @grayLighter;
+    .border-bottom(@border);
+}

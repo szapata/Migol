@@ -1,0 +1,7 @@
+parameters:
+    sloo_contacts.lists.class: Sloo\ContactsBundle\Controller\ListsController
+
+services:
+    sloo_contacts_lists:
+        class: %sloo_contacts.lists.class%
+        arguments: []

@@ -1,0 +1,15 @@
+{% extends 'MigolCommonPagesBundle:Private:2colsLayout.html.twig' %}
+{% block scripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block firstCol %}
+{% render  'MigolCommonPagesBundle:GlobalBlocks:profileBigPhoto' %}
+
+{% render  'SlooContactsBundle:Contacts:contactsWidget' with {'followers': true, 'user2': user2} %}
+{% render  'SlooContactsBundle:Contacts:contactsWidget' with {'followers': false, 'user2': user2} %}
+{% render  'MigolCommonPagesBundle:GlobalBlocks:followedTeams' with {'user': user, 'user2': user2} %}
+
+{% endblock firstCol %}
+
+

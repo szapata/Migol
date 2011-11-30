@@ -1,0 +1,7 @@
+parameters:
+#    ria_backbone.example.class: RIA\BackboneBundle\Example
+
+services:
+#    ria_backbone.example:
+#        class: %ria_backbone.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

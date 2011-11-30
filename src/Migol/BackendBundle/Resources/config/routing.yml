@@ -1,0 +1,7 @@
+MigolBackendBundle_homepage:
+    pattern:  /admin/migol/
+    defaults: { _controller: MigolBackendBundle:Default:index }
+    
+_admin_city:
+    resource: "@MigolBackendBundle/Resources/config/routing/skill.yml"
+    prefix: /skill/

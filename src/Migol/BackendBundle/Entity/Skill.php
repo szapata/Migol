@@ -1,0 +1,299 @@
+<?php
+namespace Migol\BackendBundle\Entity;
+
+use Gedmo\Translatable\Translatable;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="skills")
+ */
+
+class Skill implements Translatable
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+    
+    /**
+     * @Gedmo\Translatable
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+    
+    /**
+     * @Gedmo\Locale
+     * Used locale to override Translation listener`s locale
+     * this is not a mapped field of entity metadata, just a simple property
+     */
+    private $locale;
+
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $forplayer=true;
+       
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $formanager;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $fortrainer;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $forfan;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $formedic;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $foragent;
+    
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    protected $forexecutive;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Migol\UserBundle\Entity\UserSkill", mappedBy="skill")
+     */
+    protected $usersskills;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="Position", inversedBy="postitions")
+     * @ORM\JoinColumn(name="position_id", referencedColumnName="id", nullable=true)
+     */
+    protected $position;
+    
+    public function __toString() { return $this->name; }
+    public function __construct()
+    {
+        $this->usersskills = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set forplayer
+     *
+     * @param boolean $forplayer
+     */
+    public function setForplayer($forplayer)
+    {
+        $this->forplayer = $forplayer;
+    }
+
+    /**
+     * Get forplayer
+     *
+     * @return boolean 
+     */
+    public function getForplayer()
+    {
+        return $this->forplayer;
+    }
+
+    /**
+     * Set formanager
+     *
+     * @param boolean $formanager
+     */
+    public function setFormanager($formanager)
+    {
+        $this->formanager = $formanager;
+    }
+
+    /**
+     * Get formanager
+     *
+     * @return boolean 
+     */
+    public function getFormanager()
+    {
+        return $this->formanager;
+    }
+
+    /**
+     * Set fortrainer
+     *
+     * @param boolean $fortrainer
+     */
+    public function setFortrainer($fortrainer)
+    {
+        $this->fortrainer = $fortrainer;
+    }
+
+    /**
+     * Get fortrainer
+     *
+     * @return boolean 
+     */
+    public function getFortrainer()
+    {
+        return $this->fortrainer;
+    }
+
+    /**
+     * Set forfan
+     *
+     * @param boolean $forfan
+     */
+    public function setForfan($forfan)
+    {
+        $this->forfan = $forfan;
+    }
+
+    /**
+     * Get forfan
+     *
+     * @return boolean 
+     */
+    public function getForfan()
+    {
+        return $this->forfan;
+    }
+
+    /**
+     * Set formedic
+     *
+     * @param boolean $formedic
+     */
+    public function setFormedic($formedic)
+    {
+        $this->formedic = $formedic;
+    }
+
+    /**
+     * Get formedic
+     *
+     * @return boolean 
+     */
+    public function getFormedic()
+    {
+        return $this->formedic;
+    }
+
+    /**
+     * Set foragent
+     *
+     * @param boolean $foragent
+     */
+    public function setForagent($foragent)
+    {
+        $this->foragent = $foragent;
+    }
+
+    /**
+     * Get foragent
+     *
+     * @return boolean 
+     */
+    public function getForagent()
+    {
+        return $this->foragent;
+    }
+
+    /**
+     * Set forexecutive
+     *
+     * @param boolean $forexecutive
+     */
+    public function setForexecutive($forexecutive)
+    {
+        $this->forexecutive = $forexecutive;
+    }
+
+    /**
+     * Get forexecutive
+     *
+     * @return boolean 
+     */
+    public function getForexecutive()
+    {
+        return $this->forexecutive;
+    }
+
+    /**
+     * Set position
+     *
+     * @param Migol\BackendBundle\Entity\Position $position
+     */
+    public function setPosition(\Migol\BackendBundle\Entity\Position $position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * Get position
+     *
+     * @return Migol\BackendBundle\Entity\Position 
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * Add usersskills
+     *
+     * @param Migol\UserBundle\Entity\UserSkill $usersskills
+     */
+    public function addUserSkill(\Migol\UserBundle\Entity\UserSkill $usersskills)
+    {
+        $this->usersskills[] = $usersskills;
+    }
+
+    /**
+     * Get usersskills
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getUsersskills()
+    {
+        return $this->usersskills;
+    }
+}

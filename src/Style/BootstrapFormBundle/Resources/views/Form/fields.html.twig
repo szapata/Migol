@@ -1,0 +1,64 @@
+{% block field_row %}
+  {% if form_errors(form) %}
+    {% set clase = 'xlarge error' %}
+    {% set caja = 'clearfix error' %}
+  {% else %}
+    {% set clase = 'xlarge' %}
+    {% set caja = 'clearfix' %}
+  {% endif %}
+
+  {% spaceless %}
+    <div class="{{ caja }}">
+      {{ form_label(form) }}
+      <div class="input">
+        {{ form_widget(form, { 'attr': {'class': clase}, 'empty_value': 'Seleccione...' }) }}
+        <span class="help-inline">{{ form_errors(form) }}</span>
+      </div>
+    </div>
+  {% endspaceless %}
+{% endblock field_row %}
+
+
+{% block field_label %}
+  {% spaceless %}
+    <label for="{{ id }}">
+      {{ id|trans([], 'FOSUserBundle') }}
+      {% if required %}
+        <span class="required" titulo="Requerido">*</span>
+      {% endif %}
+    </label>
+  {% endspaceless %}
+{% endblock field_label %}
+
+
+{% block field_errors %}
+{% spaceless %}
+    {% if errors|length > 0 %}
+    <ul class="error_list">
+        {% for error in errors %}
+            <li>{{ error.messageTemplate|trans(error.messageParameters, 'FOSUserBundle') }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+{% endspaceless %}
+{% endblock field_errors %}
+
+
+{% block form_errors %}
+{% spaceless %}
+  {% if errors|length > 0 %}
+    <div class="alert-message block-message error fade in" data-alert="alert">
+      <a class="close" href="#">×</a>
+      <p>
+        <strong>Upss! Error. </strong>
+          <ul class="error_list">
+            {% for error in errors %}
+              <li>{{ error.messageTemplate|trans(error.messageParameters, 'FOSUserBundle') }}</li>
+            {% endfor %}
+          </ul>
+      </p>
+    </div>
+  {% endif %}
+{% endspaceless %}
+{% endblock form_errors %}
+

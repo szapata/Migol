@@ -1,0 +1,28 @@
+{% extends 'MigolCommonPagesBundle:Private:3colsLayout.html.twig' %}
+{% block scripts%}
+    {{ parent() }}
+    <script>
+            $(function () {
+              $("a[rel=twipsy]").twipsy({
+                live: true,
+                placement: 'below'
+              });
+              
+            })
+    </script>
+{% endblock %}
+{% block firstCol %}
+                {% render  'MigolCommonPagesBundle:GlobalBlocks:profilePhoto' %}
+                {% render  'MigolCommonPagesBundle:GlobalBlocks:leftMenu' %}
+                {% render  'SlooContactsBundle:Lists:listsWidget' %}
+                {% render  'MigolCommonPagesBundle:GlobalBlocks:followedCompetitions' %}
+                {% render  'MigolCommonPagesBundle:GlobalBlocks:followedTeams' with {'user': null, 'user2': null} %}
+{% endblock firstCol %}
+
+{% block secondCol %}
+<div class="span9 margin-top-standard">
+    
+        
+ 
+</div>
+{% endblock secondCol %}

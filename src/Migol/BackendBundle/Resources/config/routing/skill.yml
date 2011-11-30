@@ -1,0 +1,30 @@
+admin_migol_skill:
+    pattern:  /
+    defaults: { _controller: "MigolBackendBundle:Skill:index" }
+
+admin_migol_skill_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "MigolBackendBundle:Skill:show" }
+
+admin_migol_skill_new:
+    pattern:  /new
+    defaults: { _controller: "MigolBackendBundle:Skill:new" }
+
+admin_migol_skill_create:
+    pattern:  /create
+    defaults: { _controller: "MigolBackendBundle:Skill:create" }
+    requirements: { _method: post }
+
+admin_migol_skill_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "MigolBackendBundle:Skill:edit" }
+
+admin_migol_skill_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "MigolBackendBundle:Skill:update" }
+    requirements: { _method: post }
+
+admin_migol_skill_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "MigolBackendBundle:Skill:delete" }
+    requirements: { _method: post }

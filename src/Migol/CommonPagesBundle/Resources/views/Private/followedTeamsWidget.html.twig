@@ -1,0 +1,27 @@
+
+<div class="row margin-top-standard">
+    <div class="span4">
+        {% if url('MigolCommonPagesBundle_dashboard') == app.request.uri %} 
+            <h6>{{ 'my.teams'|trans }}</h6>
+        {% else %}
+        <p>
+           <strong>{% if user!=user2 %}
+                        {{ 'followed.teams.by'|trans }} 
+                        {% if user2.firstname is empty %}
+                            {{user2.username}}
+                        {% else  %}
+                            {{user2.firstname}} {{user2.lastname}}    
+                        {% endif  %}
+                   {% else %}
+                        {{ 'followed.teams.by.you'|trans }}
+                   {% endif %}
+           </strong>
+        </p>
+        {% endif %}
+        <ul class="left-entities">
+            <li><img src="{{ asset('bundles/migolcommonpages/images/temp/cfparets_logo.jpg') }}" alt="Migol" /><a href="#"><strong>C.F. Parets</strong></a></li>
+            <li><img src="{{ asset('bundles/migolcommonpages/images/temp/cfparets_logo.jpg') }}" alt="Migol" /><a href="#"><strong>Renato Cesarini</strong></a></li>
+        </ul>
+        <a href="#" class="seemore">{{ 'see.more'|trans }} &raquo;</a>
+    </div>
+</div>

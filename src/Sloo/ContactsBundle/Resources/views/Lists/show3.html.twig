@@ -1,0 +1,9 @@
+<h6>Listas</h6>
+<ul class="left-entities">
+    {% if contactlists|length > 0 %}
+        {% for list in contactlists %}
+            <li><span class="icon-left-favorites"></span><a href="#"><strong>{{list.name}}</strong></a></li>
+        {% endfor %}
+    {% endif %}
+</ul>
+<a href="{{ path('SlooContactsBundle_lists') }}" class="seemore">{{ 'see.more'|trans }} &raquo;</a>

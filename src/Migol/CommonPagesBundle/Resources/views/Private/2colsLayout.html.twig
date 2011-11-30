@@ -1,0 +1,46 @@
+{% extends "MigolCommonPagesBundle::layout.html.twig" %}
+
+{% block scripts%}
+    {{ parent() }}
+    <script>
+            $(function () {
+              $("a[rel=twipsy]").twipsy({
+                live: true,
+                placement: 'below'
+              });
+              
+            });
+    </script>
+{% endblock %}
+{% block bodyclass %} {% endblock %}
+{% block header %}
+        <!-- Navigation Top Bar -->
+        {% include 'MigolCommonPagesBundle:Private:privateTopNavBar.html.twig' %}
+        <!-- End Navigation Top Bar -->
+{% endblock %}
+{% block content %}
+
+<div class="row margin-top-topbar">
+    <!-- 1st Column -->
+    <div class="span4">
+        
+            {% block firstCol %}
+                
+            {% endblock firstCol %}
+        
+    
+    </div>
+    <!-- End 1st Column -->
+    
+    <!-- 2nd Column -->
+    <div class="span12">
+        <div class="row margin-top-logo center-column-content">
+            {% block secondCol %}
+            <span>&LeftArrow;</span> <a href="{{ url('MigolCommonPagesBundle_homepage') }}">{{ 'public.backhome'|trans }}</a>
+                
+            {% endblock secondCol %}
+        </div>
+    </div>
+    <!-- End 2nd Column -->
+</div>
+{% endblock content %}

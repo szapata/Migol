@@ -1,0 +1,61 @@
+{% extends 'MigolUserBundle:Profile:show.html.twig' %}
+{% block scripts%}
+    {{ parent() }}
+<script src="{{ asset('bundles/stylebootstrap/js/jquery.bootstrappopover.js') }}" type="text/javascript"></script>
+<script src="{{ asset('bundles/sloocontacts/js/jquery-ui-1.8.16.custom.min.js') }}" type="text/javascript"></script>
+<script>
+  //Global variables
+  var showFollowers = '{{showFollowers}}';
+  var showContactsURL = '{{ url('SlooContactsBundle_showContacts') }}';
+  var showProfileURL = '{{ url('MigolUserBundle_showProfile',{'username':''}) }}';
+  var showListURL = '{{ url('SlooContactsBundle_showUserInLists') }}';
+  var saveListURL = '{{ url('SlooContactsBundle_saveList') }}';
+  var saveUserInListsURL = '{{ url('SlooContactsBundle_saveInLists') }}';
+  var username = '{{user2.username}}';
+  var page = 0;
+  var loadingMessage= '{{'loading.contacts'|trans }}';
+  var unfollowMessage = '{{'unfollow'|trans}}';
+  var followMessage = '{{'follow.infinitive'|trans}}';
+  var showlistMessage='{{'add.to.list'|trans}}';
+  var noMoreContactsMessage= '{{'loading.no.more.contacts'|trans }}';
+  var yourListsMessage= '{{'your.lists'|trans }}';
+  var followURL = '{{ url('SlooContactsBundle_follow') }}';
+  var unfollowURL = '{{ url('SlooContactsBundle_unfollow') }}';
+  var includeMessage = '{{'include.to'|trans }}';
+  var inMessage = '{{'in'|trans }}';
+  var createListMessage = '{{'create.new.list'|trans }}';
+  var saveListMessage= '{{'save.list'|trans }}'; 
+  var newListMessage= '{{'new.list'|trans }}';
+  var loadingImageURL = '{{ asset('bundles/migolcommonpages/images/gifs/loading.gif') }}';
+  var initialContactList = new Array();
+  {% for contact in contacts %}
+                initialContactList.push({
+                                    username: '{{ contact.user.username }}',
+                                    firstname:   '{{ contact.user.firstname }}',
+                                    lastname: '{{ contact.user.lastname }}',
+                                    following: '{{ contact.following }}'
+                          });
+  {% endfor %}
+</script>
+
+{% endblock %}   
+{% block secondCol %}
+
+<div class="span12 margin-top-standard">
+    <span>&LeftArrow;</span> <a href="{{ url('MigolUserBundle_showProfile',{'username': user2.username }) }}">{{ 'backprofile'|trans }}</a>
+    <div class="row">
+        <div class="span12">
+            <h1>{% if showFollowers %}{% if user!=user2 %}{{ 'followers.of'|trans }} {{user2.username}}{% else %}{{ 'followers.of.you'|trans }}{% endif %}{% else %}{% if user!=user2 %}{{ 'people.followed.by'|trans }} {{user2.username}}{% else %}{{ 'people.followed.by.you'|trans }}{% endif %} {% endif %} </h1>
+        </div>
+    </div>
+    <div id="contacts">
+        
+    </div>
+
+</div>
+{% endblock %}
+{% block backbone%}
+<script src="{{ asset('bundles/sloocontacts/js/contactlist.js') }}" type="text/javascript"></script>
+{% endblock %}
+
+

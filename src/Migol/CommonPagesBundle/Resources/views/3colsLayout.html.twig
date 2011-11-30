@@ -1,0 +1,41 @@
+{% extends "MigolCommonPagesBundle::layout.html.twig" %}
+
+{% block scripts%}
+    {{ parent() }}
+{% endblock %}
+
+{% block content %}
+
+<div class="row margin-top-topbar">
+    <!-- 1st Column -->
+    <div class="span6">
+        <div class="row margin-top-double">
+            {% block firstCol %}
+                <a href="{{ url('MigolCommonPagesBundle_homepage') }}" title="{{'public.title'|trans}}">
+                    <img src="{{ asset('bundles/migolcommonpages/images/logos/official_logo_elegido_small.png') }}" alt="Migol" />
+                </a>
+                <h3>{{'public.title' | trans }}</h3>
+                <p><em>{{'public.signin.start.enjoy' | trans }}</em></p>
+            {% endblock firstCol %}
+        </div>
+    
+    </div>
+    <!-- End 1st Column -->
+    
+    <!-- 2nd Column -->
+    <div class="span6">
+        <div class="row margin-top-double">
+            {% block secondCol %}{% endblock secondCol %}
+        </div>
+    </div>
+    <!-- End 2nd Column -->
+    
+    <!-- 3th Column -->
+    <div class="span4">
+        <div class="row margin-top-double">
+            {% block thirdCol %}{% endblock thirdCol %}
+        </div>
+    </div>
+    <!-- End 3th Column -->
+</div>
+{% endblock content %}

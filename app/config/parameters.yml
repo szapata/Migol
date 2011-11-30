@@ -1,0 +1,19 @@
+# These parameters can be imported into other config files
+# by enclosing the key with % (like %database_user%)
+# Comments start with '#'
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     8889
+    database_name:     migol
+    database_user:     root
+    database_password: root
+
+    mailer_transport:  gmail
+    mailer_host:       localhost
+    mailer_user:       salvador.zapata
+    mailer_password:   princesa
+
+    locale:            es
+
+    secret:            d6dd70f49dfc4c1e430be97e34428f97c5801e24

@@ -1,0 +1,56 @@
+{% extends "MigolCommonPagesBundle::3colsLayout.html.twig" %}
+{% block scripts %}
+    {{ parent() }}
+    <script>
+            $(function () {
+              $("a[rel=twipsy]").twipsy({
+                live: true,
+                placement: 'below'
+              })
+            })
+    </script>
+{% endblock %}
+{% block secondCol %}
+    {% if error %}
+        <div class="alert-message fade in error" data-alert="alert">
+             <a class="close" href="#">×</a>
+             <p>{{ error }}</p>
+        </div>
+    {% endif %}
+    <div class="white-transparent-box padding-left-standard padding-top-half">
+        <h1>{{ 'public.signin'|trans }}</h1>
+        <form action="{{ path("fos_user_security_check") }}" method="post" class="form-stacked">
+            <p>
+                <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" />
+            </p>
+
+            <p>
+                <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                <input type="password" id="password" name="_password" />
+            </p>
+
+            <p>
+                <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                <span>{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</span>
+            </p>
+            <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn success"/>
+        </form>
+    </div>
+    
+    <div class="alert-message block-message warning margin-top-standard">
+        <h4>{{ 'public.signin.facebook'|trans }}</h4>
+        <p><a href="#" class="btn facebook superlarge"><span class="icon-facebook"></span>{{ 'public.signin'|trans }}</a></p>
+        
+    </div>
+{% endblock secondCol %}
+    
+{% block thirdCol %}
+<div class="span4">
+    <p><span class="icon-padlock-small"></span><small><a href="#">{{ 'public.signin.password.lost'|trans }}</a> {{ 'public.or.maybe.your'|trans }} <a href="#" rel="twipsy" data-original-title="{{ 'public.signin.forget.try.with.username'|trans }}"> {{ 'public.signin.forget.username'|trans }}</a></small></p>
+    
+</div>
+{% endblock thirdCol %}
+
+
+

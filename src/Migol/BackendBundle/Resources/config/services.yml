@@ -1,0 +1,7 @@
+parameters:
+#    migol_backend.example.class: Migol\BackendBundle\Example
+
+services:
+#    migol_backend.example:
+#        class: %migol_backend.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

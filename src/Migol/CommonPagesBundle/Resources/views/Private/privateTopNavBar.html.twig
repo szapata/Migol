@@ -1,0 +1,46 @@
+<div class="topbar-wrapper" style="z-index: 5;">
+    <div class="topbar" data-dropdown="dropdown">
+        <div class="topbar-inner">
+            <div class="container">
+                <ul class="nav secondary-nav">
+                    <!--li><a href="#"><span class="icon-notifications-unactive"></span></a></li-->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">{{user.username}}</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">{{'edit.profile'|trans }}</a></li>
+                            <li><a href="#">{{'edit.account'|trans }}</a></li>
+                            <li><a href="#">{{'help'|trans}}</a></li>  
+                            <li class="divider"></li>
+                            <li><a href="{{ url('fos_user_security_logout') }}">{{'signout'|trans }}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="header margin-top-topbar">
+    <div class="container">
+        <div class="row margin-top-standard">
+            <!-- Logo, home button and search -->
+            <div class="span4">
+                <a href="{{ url('MigolCommonPagesBundle_homepage') }}" title="{{'public.backhome'|trans}}" rel="twipsy">
+                    <img src="{{ asset('bundles/migolcommonpages/images/logos/official_logo_elegido_smallest.png') }}" alt="Migol" />
+                </a>
+            </div>
+            <div class="span11 offset1">
+              <form action="">
+                <input type="text" class="span6" placeholder="{{'search.placeholder'|trans }}"/>
+                <button type="submit" class="btn">{{'search'|trans }}</button>
+                <span class="help-inline"><a href="#">{{ 'advanced.search'|trans }}</a></span>
+              </form>
+            </div>
+            <!-- End Logo, home button and search -->
+        </div>
+        
+    </div>
+</div>
+<div class="loading text-align-center hidden span8 offset4 alert-message block-message warning" id="loading">
+    <span></span>
+    <img src="{{ asset('bundles/migolcommonpages/images/gifs/loading.gif') }}" width="10" height="10"/>            
+</div>

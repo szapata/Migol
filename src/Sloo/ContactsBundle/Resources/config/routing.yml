@@ -1,0 +1,68 @@
+SlooContactsBundle_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: SlooContactsBundle:Default:index }
+
+#Muestra las listas, controlador
+SlooContactsBundle_showLists:
+  pattern:  /contacts/lists/show
+  defaults: { _controller: SlooContactsBundle:Lists:showLists }
+  
+#Muestra la gestión de listas
+SlooContactsBundle_lists:
+  pattern:  /lists/manage
+  defaults: { _controller: SlooContactsBundle:Lists:lists }
+
+#Muestra las listas, servicio
+SlooContactsBundle_service_showLists:
+  pattern:  /contacts/services/lists/show
+  defaults: { _controller: sloo_contacts_lists:showListsAction }
+
+#Guarda un usuario en las listas especificadas  
+SlooContactsBundle_saveInLists:
+  pattern:  /contacts/lists/savein
+  defaults: { _controller: SlooContactsBundle:Lists:saveInLists }
+
+#Muestra las listas en las que está presente un usuario  
+SlooContactsBundle_showUserInLists:
+  pattern:  /contacts/lists/showin
+  defaults: { _controller: SlooContactsBundle:Lists:showUserInLists }
+
+#Crea una nueva lista
+SlooContactsBundle_saveList:
+  pattern:  /contacts/lists/save/{id}
+  defaults: { _controller: SlooContactsBundle:Lists:saveList, _format: json, id: ~}
+
+#Eliminar una lista
+SlooContactsBundle_deleteList:
+  pattern:  /contacts/lists/delete/{id}
+  defaults: { _controller: SlooContactsBundle:Lists:deleteList, _format: json, id: ~}
+  
+#Follow
+SlooContactsBundle_follow:
+  pattern:  /contacts/follow
+  defaults: { _controller: SlooContactsBundle:Contacts:followUser }
+
+#UnFollow
+SlooContactsBundle_unfollow:
+  pattern:  /contacts/unfollow
+  defaults: { _controller: SlooContactsBundle:Contacts:unfollowUser }
+
+#Show Contacts (Followers or following)
+SlooContactsBundle_showContacts:
+    pattern:  /contacts/show/contacts/
+    defaults: { _controller: SlooContactsBundle:Contacts:showContacts }
+
+#Show All Contacts (Followers or following)
+SlooContactsBundle_allContacts:
+    pattern:  /contacts/show/contacts/{username}
+    defaults: { _controller: SlooContactsBundle:Contacts:showAllContacts, followers: false }
+#show all followers
+SlooContactsBundle_followers:
+    pattern:  /contacts/show/followers/{username}
+    defaults: { _controller: SlooContactsBundle:Contacts:showAllContacts, followers: true }
+#show all followeds
+SlooContactsBundle_followeds:
+    pattern:  /contacts/show/followeds/{username}
+    defaults: { _controller: SlooContactsBundle:Contacts:showAllContacts, followers: false }
+    
+

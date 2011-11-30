@@ -1,0 +1,13 @@
+<div class="row margin-top-logo">
+    <div class="span4 margin-top-standard profile-photo">     
+            <img src="//lh6.googleusercontent.com/-h2ItMrLEMww/AAAAAAAAAAI/AAAAAAAAAx0/qRp2UhNuryU/photo.jpg?sz=48" alt="Foto del perfil de Salvador"/>
+            <a href="{{ path('MigolUserBundle_showProfile',{'username': user.username }) }}">
+            {% if user.firstname is empty %}
+                {{user.username}}
+            {% else  %}
+                {{user.firstname}} {{user.lastname}}    
+            {% endif  %}
+            </a>  
+    </div>
+</div>
+
